@@ -1,61 +1,75 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<<<<<<< HEAD
+
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="script.js"></script>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- link to Bootstrap for styling -->
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
+        crossorigin="anonymous">
+
+    <!-- script tag for jQuery -->
+    <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            crossorigin="anonymous">
+    </script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" 
+            crossorigin="anonymous">
+    </script>
+
+    <!-- Link to the stylesheet -->
+    <link
+        rel="stylesheet"
+        href="style.css">
+
     <title>Weather Dashboard</title>
 </head>
-   
+
 
 <body>
-    <div class = "container-fluid">
-         <div class = "headerrow">
-            <div class = "col-md-12">
-                <h1 id ="header">Weather Dashboard</h1><hr>
+    <div class="container-fluid">
+        <div class="headerrow">
+            <div class="col-md-12">
+                <h1 id="header">Weather Dashboard</h1>
+                <hr>
             </div>
-            </div>
-    <div class = "row">
-        <div class = "col-md-4 searcharea">
-            <h3 class = "text-secondary">Search for a City:</h3>
-            <div class = "input">
-                <input type = "text" id = "searchinput" type = "search">
-                <button class = "btn btn-primary" id="searchbtn" type = "search">
-                    <i class = "fas fa-search"></i>
-                </button>
-                <div id = "buttons-view"></div>
-                <!--previous search buttons here-->
+        </div>
+        <div class="row">
+            <div class="col-md-4 searcharea">
+                <h3 class="text-secondary">Search for a City:</h3>
+                <div class="input">
+                    <input type="text" id="searchinput" type="search">
+                    <button class="btn btn-primary" id="searchbtn" type="search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div id="buttons-view"></div>
+                    <!--previous search buttons here-->
                 </div>
             </div>
-            <div class = "col-md-8" id = "data">
+            <div class="col-md-8" id="data">
                 <!--weather data-->
-                <h2 class = "citydate"></h2><h2 id = "date"></h2>
-                <h2 id = "currentimg"></h2>
-                <p class = "temp"></p>
-                <p class = "humidity"></p>
-                <p class = "wind"></p>
-                <p class = "uv"></p>
+                <h2 class="citydate"></h2>
+                <div id="cityName"></div>
+                <br>
+                 <div id="mainWeather"></div>
+                <h2 id="currentimg"></h2>
+                <p class="temp"></p>
+                <p class="humidity"></p>
+                <p class="wind"></p>
+                <p class="uv"></p>
             </div>
         </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <!-- script tag to the Javascript file -->
+        <script src="script.js"></script>
 </body>
 
 </html>
-=======
-  <head>
-    <link href="style.css" rel="stylesheet" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-
-  <body>
-    <script src="script.js"></script>
-  </body>
-</html>
->>>>>>> c639ca12ed8acfb3298d9e04a249f45567eaddc7
