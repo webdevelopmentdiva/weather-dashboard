@@ -36,7 +36,7 @@
 
 <body>
     <div class="container-fluid">
-        <div class="headerrow">
+        <div class="headerRow">
             <div class="col-md-12">
                 <h1 id="header">Weather Dashboard</h1>
                 <hr>
@@ -46,26 +46,30 @@
             <div class="col-md-4 searcharea">
                 <h3 class="text-secondary">Search for a City:</h3>
                 <div class="input">
-                    <input type="text" id="searchinput" type="search">
-                    <button class="btn btn-primary" id="searchbtn" type="search">
+                    <input type="text" id="searchInput" type="search">
+                    <button class="btn btn-primary" id="searchBtn" type="search">
                         <i class="fas fa-search"></i>
                     </button>
                     <div id="buttons-view"></div>
                     <!--previous search buttons here-->
                 </div>
             </div>
+            <div class = "container-fluid weatherResults">
+            <div class = "row">
             <div class="col-md-8" id="data">
                 <!--weather data-->
                 <h2 class="citydate"></h2>
                 <div id="cityName"></div>
                 <br>
-                 <div id="mainWeather"></div>
+                <div id="mainWeather"></div>
                 <h2 id="currentimg"></h2>
-                <p class="temp"></p>
-                <p class="humidity"></p>
-                <p class="wind"></p>
-                <p class="uv"></p>
+                <p id="temp"></p>
+                <p id="humidity"></p>
+                <p id="wind"></p>
+                <p id="uv"></p>
             </div>
+            </div>
+        </div>
         </div>
 
         <!-- script tag to the Javascript file -->

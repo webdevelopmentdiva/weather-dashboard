@@ -1,10 +1,15 @@
-
-
 #cityName {
-    color: Blue;
+  color: Blue;
 }
-
 #mainWeather {
-
-    color: red;
+  color: Blue;
+}
+#temp {
+  color: Blue;
+}
+#humidity {
+  color: Blue;
+}
+#wind {
+  color: Blue;
 }
