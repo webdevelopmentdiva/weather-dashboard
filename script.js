@@ -1,7 +1,3 @@
-$(document).ready(function () {
-    alert("Hello Skye!");
-});
-
 let previousCities = [];
 
 
@@ -21,15 +17,14 @@ function getWeather(location) {
         })
         .then(function (result) {
             console.log(result);
+            console.log(result.main.humidity);
             $("#cityName").append("<h2> City Name: " + result.name + "</h2>");
-            $
-            $("#mainWeather").append("<h5> Sky: " + result.weather[0].main + "</h5>");
-
+            $("#mainWeather").append("<h3> Sky: " + result.weather[0].main + "</h3>");
+            $("#date").append("<h4> Date: " + result.timezone + "</h4>");
+            // $("#temp").append("<h5> Temp: " + result.weather[0].main + "</h5>");
+            $("#humidity").append("<h6> Humidity: " + result.main.humidity + "</h6>");
         })
-
-
-
-}
+} 
 $("#searchbtn").click(function (e) {
 
     e.preventDefault();
