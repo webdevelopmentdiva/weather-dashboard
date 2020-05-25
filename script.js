@@ -1,60 +1,98 @@
-$(document).ready(function () {});
+var searchInputEl = $("#searchInput");
+var dateEl = $("#date");
+var nameEl = $("#cityName");
+var tempEl = $("#temp");
+var humidityEl = $("#humidity");
+var windSpeedEl = $("#windSpeed");
+var uvIndex = $("#uvIndex");
 
-//localStorage the previous cities
-let previousCities = [];
-// localStorage.setItem("previousCities");
-// document.getElementById("result").innerHTML = localStorage.getItem(
-//   "previousCities"
-// );
+const FAHRENHEIT = "°F";
 
-//run the API call to weathermap API
-function getWeather(location) {
+/*
+var storedSearches = JSON.parse(localStorage.GetItem("cityArr"));
+if(storedSearches === null) {
+    storedSearches = [];
+}
+
+var newSearchEl;
+
+for (let i = storedSearches.length -1; i > 0; i--) {
+    newSearchEl = $("<h2>");
+    newSearchEl.addClass("newSearch");
+    newSearchEl.text(storedSearches[i]);
+    recentSearch.append(newSearchEl)
+}
+*/
+
+$("#searchBtn").click(function (e) {
+  e.preventDefault();
+
+  var location = $("#searchInput").val();
   const QUERY =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
     location +
     "&appid=484d77b1cc177cb84f44663aaf1730c7";
-  //Api is going to give us a object you need toJSON.parse
-  //Need to use the GET method through AJAX call
+
+  callAPI(QUERY);
+});
+
+function callAPI(QUERY) {
   $.ajax({
     url: QUERY,
     method: "GET",
-  }).then(function (result) {
-    console.log(result);
-    $("#cityName").text("City Name: " + result.name + "");
-    $("#mainWeather").text("Sky: " + result.weather[0].description + "");
-    //not working
-    $("#temp").text("Temp: " + result.main.temp + "");
-    $("#humidity").text("Humidity: " + result.main.humidity + "");
-    $("#wind").text("Wind: " + result.wind.speed + "");
+  }).then(function (res) {
+    console.log(res);
+    $("#cityName").append(res.name);
+    //var currentDate = moment(res.city.list[0].dt).format('MMMM/DD/YYYY');
+    //$("#date").append(currentDate);
+
+    //!!This is the call for the weather icon
+    var icon =
+      "https://openweathermap.org/img/w/" + res.weather[0].icon + ".png";
+    $("#weatherIcon").attr("src", icon);
+    var temp = Math.floor((res.main.temp - 273.15) * 1.8 + 32);
+    console.log(res);
+    var humidity = res.main.humidity;
+    var windSpeed = res.wind.speed;
+
+    $("#temp").append(temp + "°F");
+    $("#humidity").append(humidity);
+    $("#windSpeed").append(windSpeed);
+
+    var lat = res.coord.lat;
+    var lon = res.coord.lon;
+
+    console.log(lat);
+    console.log(lon);
+
+    const QUERY2 =
+      "https://api.openweathermap.org/data/2.5/uvi?appid=484d77b1cc177cb84f44663aaf1730c7&lat=" +
+      lat +
+      "&lon=" +
+      lon;
+
+    //!! This is a call for the UVI index
+    $.ajax({
+      url: QUERY2,
+      method: "GET",
+    }).then(function (resUVI) {
+      console.log(resUVI);
+      $("#uvIndex").append(resUVI.value);
+    });
+
+    var location = $("#searchInput").val();
+
+    //!!5 day weather forecast API
+    const QUERY3 =
+      "https://api.openweathermap.org/data/2.5/forecast?q=" +
+      location +
+      "&appid=484d77b1cc177cb84f44663aaf1730c7";
+    //call for 5 day
+    $.ajax({
+      url: QUERY3,
+      method: "GET",
+    }).then(function (res) {
+      console.log(res);
+    });
   });
 }
-$("#searchBtn").click(function (e) {
-  e.preventDefault();
-
-  let location = $("#searchInput").val().trim();
-  console.log(location);
-
-  getWeather(location);
-});
-
-/*
-Corrado notes
-function (previousCities, result);
-localStorage.setItem(cities,
-        JSON.stringify(previousCities);
-
-        function ~name~(result);
-
-        let temp = result.temperature
-
-        function showTemperature(temp) {
-            if (temp > 80) {
-                console.log(“oh my god I am melting”);
-            } else {
-                Console.log(“way too cold, I need to go to Mesa”);
-            }
-*/
-/*
-Create buttons to the left that results save to
-5 day weather forecast 
-*/
