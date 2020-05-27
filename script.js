@@ -93,6 +93,18 @@ function callAPI(QUERY) {
       method: "GET",
     }).then(function (res) {
       console.log(res);
+      for (i = 0; i < res.list.length; i++) {
+        if (res.list[i].dt_txt.indexOf("12:00:00") !== -1) {
+          var temp5 = Math.floor((res.list.main.temp - 273.15) * 1.8 + 32);
+          console.log(res);
+          var humidity5 = res.list.main.humidity;
+          var windSpeed5 = res.list.wind.speed;
+      
+          $("#card-text").append(temp5 + "°F");
+          $("#fiveDay").append(humidity5);
+          $("#fiveDay").append(windSpeed5);
+        }
+      }
     });
   });
 }
