@@ -41,7 +41,6 @@ function callAPI(QUERY) {
     url: QUERY,
     method: "GET",
   }).then(function (res) {
-    console.log(res);
     $("#cityName").append(res.name);
     //var currentDate = moment(res.city.list[0].dt).format('MMMM/DD/YYYY');
     //$("#date").append(currentDate);
@@ -51,7 +50,6 @@ function callAPI(QUERY) {
       "https://openweathermap.org/img/w/" + res.weather[0].icon + ".png";
     $("#weatherIcon").attr("src", icon);
     var temp = Math.floor((res.main.temp - 273.15) * 1.8 + 32);
-    console.log(res);
     var humidity = res.main.humidity;
     var windSpeed = res.wind.speed;
 
@@ -61,9 +59,6 @@ function callAPI(QUERY) {
 
     var lat = res.coord.lat;
     var lon = res.coord.lon;
-
-    console.log(lat);
-    console.log(lon);
 
     const QUERY2 =
       "https://api.openweathermap.org/data/2.5/uvi?appid=484d77b1cc177cb84f44663aaf1730c7&lat=" +
@@ -76,7 +71,6 @@ function callAPI(QUERY) {
       url: QUERY2,
       method: "GET",
     }).then(function (resUVI) {
-      console.log(resUVI);
       $("#uvIndex").append(resUVI.value);
     });
 
@@ -92,17 +86,25 @@ function callAPI(QUERY) {
       url: QUERY3,
       method: "GET",
     }).then(function (res) {
-      console.log(res);
       for (i = 0; i < res.list.length; i++) {
         if (res.list[i].dt_txt.indexOf("12:00:00") !== -1) {
-          var temp5 = Math.floor((res.list.main.temp - 273.15) * 1.8 + 32);
-          console.log(res);
-          var humidity5 = res.list.main.humidity;
-          var windSpeed5 = res.list.wind.speed;
+          var temp5 = Math.floor((res.list[i].main.temp - 273.15) * 1.8 + 32);
+          var humidity5 = res.list[i].main.humidity;
+          var windSpeed5 = res.list[i].wind.speed;
       
-          $("#card-text").append(temp5 + "°F");
-          $("#fiveDay").append(humidity5);
-          $("#fiveDay").append(windSpeed5);
+          var fiveDay = $("<div>").attr("class", "card col-md-2")
+          var cardBody = $("<div>").attr("class", "card-body")
+          var cardTitle = $("<h5>").attr("class", "card-title")
+          var cardText = $("<p>").attr("class", "card-text")
+
+          cardText.append(temp5 + "°F");
+          cardText.append(humidity5);
+          cardText.append(windSpeed5);
+
+          cardBody.append(cardTitle)
+          cardBody.append(cardText)
+          fiveDay.append(cardBody)
+          //selector for 5 day, append 5 day
         }
       }
     });
